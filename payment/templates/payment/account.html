@@ -1,0 +1,83 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Accounts</li>
+  </ol>
+</nav>
+
+<div class="card">
+    <div class="card-header">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                  <h4>Implementation Details</h4>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2"> 
+                    <a href="{%url 'payment:create_implementation' %}"><button type="submit" class="btn button-add">Create Account</button></a>
+                </div>
+            </div>
+            <div class="row"></div>
+            <table class="table data table-sm" >
+                    <tr>
+                    <th>Facility</th>
+                    <th>No of Days</th>
+                    <th>Licence Due Date</th>
+                    <th>Implementation Report</th>
+                    <th>Action</th>
+                    </tr>
+
+                    {% for n in page.object_list %}
+                    <tr>
+                    <td><a href="{% url 'payment:implementation_dates' n.id %}">{{ n.facility_name|upper}}</a></td>       
+                    <td>{{ n.no_of_days }}</td>
+                    <td>{{ n.license_due}}</td>
+                    <td>{{n.implementation_report}}</td>
+                    <td>
+                        <a href="{%url 'payment:update_implementation' n.id %}"><span class="fa fa-edit" style="color:orange; font-size: large;"></span></a>&nbsp;
+                        <a href="{%url 'payment:delete_implementation' n.id %}"><span class="fa fa-trash" style="color: red; font-size: large;"></span></a>
+
+                    </td>
+                    </tr>
+                    {% endfor %}
+                </table> 
+                <div class="container">
+                    <div class="row my-6">
+                        <div class="col-md-4 offset-md-3">
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination justify-content-center">
+                                  <li class="page-item">
+                                    {% if page.has_previous %}
+                                    <a class="page-link" href="{% url 'payment:clients-details' %}?page={{ page.previous_page_number }}">Previous</a>
+                                  </li>
+                                    {% endif %}
+                                    {% for num_page in page.paginator.page_range %} <br>
+                                    {% if page.number == num_page %}
+                                    <li class="page-item active" aria-current="page">
+                                        <a class="page-link"  href="{% url 'payment:clients-details' %}?page={{num_page}}">{{ num_page }}</a>
+                                    </li>
+                                    {% else %}
+                                    <li class="page-item" aria-current="page">
+                                        <a class="page-link"  href="{% url 'payment:clients-details' %}?page={{num_page}}">{{ num_page }}</a>
+                                    </li>
+                                    {% endif %} <br>
+                                    {% endfor %}
+                                  <li class="page-item">
+                                    {% if page.has_next %}
+                                    <a class="page-link" href="{% url 'prospect:business-prospects' %}?page={{ page.next_page_number }}">Next</a>
+                                    {% endif %}
+                                  </li>
+                                </ul>
+                              </nav>
+                        </div>
+                    </div>
+                   </div>  
+                <center>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

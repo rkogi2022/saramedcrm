@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-8 mb-lg-0" >
+          <li class="nav-item" style="left: 10px;">
+            <a class="nav-link active" aria-current="page" href="{% url 'payment:transactional_report' %}">Reports</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'payment:receiptsdetails' %}">Receipts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'payment:invoicedetails' %}">Invoices</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{%url 'payment:invoicedetails' %}">Invoices</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Create Invoice</li>
+    </ol>
+  </nav>
+
+    <form method = 'POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-4"></div>
+            <div class="col-md-3">
+              <div class="card" style="width: 30rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Facility Name</b> {{ form.facilityname }}</li>
+                  <li class="list-group-item"><b>Project Cost</b> {{ form.project_cost }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <center>
+          <div>
+            <a class="btn btn-lg button-cancel" href="{% url 'payment:createinvoice' %}">Cancel</a>
+            <button type="submit" class="btn btn-lg button-add">Add</button>
+          </div>
+        </center>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{%url 'payment:clients-details' %}">Accounts</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Implementation dates</li>
+    </ol>
+  </nav>
+
+    <form method = 'POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">
+          <div class="col-md-4"></div>
+            <div class="col-md-3">
+              <div class="card" style="width: 30rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><b>Facility Name</b> {{ form.facility_name }}</li>
+                  <li class="list-group-item"><b>Start date</b> {{ form.start_date }}</li>
+                  <li class="list-group-item"><b>Go-Live Date</b> {{ form.golive_date }}</li>
+                  <li class="list-group-item"><b>End Date</b> {{ form.end_date }}</li>
+                  <li class="list-group-item"><b>End Date</b> {{ form.implementation_report }}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <center>
+          <div>
+            <a class="btn btn-lg button-cancel" href="{% url 'payment:clients-details' %}">Cancel</a>
+            <button type="submit" class="btn btn-lg button-add">Add</button>
+          </div>
+        </center>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a href="{%url 'payment:clients-details' %}">Accounts</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Implementation Dates</li>
+    </ol>
+  </nav>
+<div class="card">
+    <div class="card-header">
+        <center><h5>IMPLEMENTATION DATES DETAILS</h5></center>
+        <div class="card-body">
+            <div class="row"></div>
+            <table class="table data" >
+                    <tr>
+                    <th>Facility</th>
+                    <th>Start Date</th>
+                    <th>Go-Live Date</th>
+                    <th>End Date</th>
+                    </tr>
+
+                    {% for n in details %}
+                    <tr>
+                    <td>{{ n.facility_name|upper}}</td>
+                    <td>{{ n.start_date }}</td>
+                    <td>{{ n.golive_date }}</td>         
+                    <td>{{n.end_date}}</td>
+                    </tr>
+                    {% endfor %}
+                </table>   
+        </div>
+    </div>
+</div>
+{% endblock %}

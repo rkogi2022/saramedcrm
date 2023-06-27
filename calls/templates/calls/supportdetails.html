@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-8 mb-lg-0" >
+          <li class="nav-item" style="left: 10px;">
+            <a class="nav-link active" aria-current="page" href="{% url 'calls:viewsupportcall' %}">Support Calls</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'calls:viewcourtesycall' %}">Courtesy Calls</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'calls:viewdirectorscall' %}">Directors Calls</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a   href="{%url 'calls:viewsupportcall' %}">Support Calls</a></li>
+      <li class="breadcrumb-item active" aria-current="page" >Support Calls Details</li>
+    </ol>
+  </nav>
+<div class="card">
+    <div class="card-header">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2"> 
+
+                </div>
+            </div>
+            <div class="row">
+                <table class="table data table-sm" >
+                    <tr>
+                        <th>Problem Description</th>
+                        <th>Support Offered</th>
+                        <th>Completion Date</th>
+                        <th>Action</th>
+                        </tr>
+
+                        {% for n in calldetails %}
+                    <tr>        
+                    <td>{{n.problem|linebreaks}}</td>
+                    <td>{{n.solution|linebreaks}}</td>  
+                    <td>{{n.completiondate}}</td>
+                    <td>
+                        <a href="{%url 'calls:update_calldetails' n.id%}"><span class="fa fa-edit" style="color: orange; font-size: large;"></span></a>&nbsp;
+
+                    </td>
+                    </tr>
+                    {% endfor %}
+    
+                </table> 
+        </div>
+    </div>
+</div>
+
+{% endblock %}

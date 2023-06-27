@@ -1,0 +1,283 @@
+/* Global stylings */
+
+/* body background */
+.crm-home-bg{
+    background: url(../saramed-bg.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+}
+
+.content {
+  background-color: rgba(255, 255, 255, 0.8);
+  bottom: 0;
+}
+/* breadcrumbs styling */
+.breadcrumb-css{
+  background-color:rgb(112, 112, 112);
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right:900px;
+  border-radius: 4px;
+}
+/* Styling for pagination */
+.pagination {
+  margin-top: 10px;
+}
+
+.page-item {
+  margin-right: 5px;
+}
+
+.page-link {
+  color: black;
+  background-color: white;
+  border: 1px solid #dee2e6;
+  padding: 5px 10px;
+}
+
+.page-link:hover {
+  color: orange;
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: orange;
+  border-color: orange;
+}
+
+/* styling the footer */
+.block-content {
+  padding-bottom: 60px; /* Adjust the value to set the desired gap */
+}
+.mainfooter {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px; /* Adjust the value as per your footer height */
+}
+
+/* stlyling the buttons */
+.button-add {
+    background-color: rgb(22, 86, 50); 
+    color: white; 
+    border: 2px solid;
+    margin-bottom: 5px;
+  }
+  
+.button-add :hover {
+    background-color: #4CAF50;
+    color: white;
+  }
+.button-cancel {
+    background-color:orange; 
+    color: white; 
+    border: 2px solid;
+    margin-bottom: 5px;
+  }
+
+  /* styling alerts */
+.alert-success{
+    background-color: rgb(103, 175, 103);
+    color: #fff;
+    font-size: 15px;
+    font-weight: bold;
+  }
+.alert-error{
+    background-color: rgb(233, 42, 42);
+    color: #fff;
+    font-size: 17px;
+    font-weight: bold;
+  }
+
+/* stying the tables */
+.data {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: .9em;
+  }
+  
+  .data td, #clients th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+
+.data tr:nth-child(even){background-color: #f2f2f2;}
+
+.data tr:hover {background-color: #ddd;}
+
+.data th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: green;
+  color: white;
+}
+.data a{
+    text-decoration: none;
+    color: black;
+}
+
+/* nav bar */
+/* style the navbrand */
+.img {
+    border: 0px solid #f3f2f2;
+    border-radius: 1.5px;
+    padding: 0;
+    width: 110px;
+    height: 65px;
+ }
+ /* style to navbar and its links links */
+.navbar {
+margin-bottom: 0;
+}
+.navbar-items {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  padding-left:0;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+ /* sytling index page */
+.banner-card{
+  margin-top:10px ;
+  width: 250px;
+}
+ .banner-image{
+  width: 220px;
+  height: 120px;
+  margin-top: 10px;
+  padding: 5px;
+  opacity: 1;
+  background-color: lavenderblush;
+
+ }
+
+/* auth app css */
+/* styling bg */
+.auth-home-bg{
+  background: url(../background.jpg);
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  height: 500px;
+}
+ /* syling the register and login cards */
+.user_card {
+    width: 350px;
+    margin-top: 50px;
+    margin-bottom: auto;
+    background: #74cfbf;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+
+}
+
+.form_container {
+    margin-top: 50px;
+}
+
+#form-title{
+    color: #0e0000af;
+    text-decoration: underline;
+    margin-top: 10px;
+}
+
+.login_btn {
+    width: 100%;
+    background: #2e858c !important;
+    color: white !important;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+.login_container {
+    padding: 0 2rem;
+}
+.input-group-text {
+    background: #f7ba5b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+#messages{
+    background-color: grey;
+    color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* style links */
+.a-shortcut{
+    text-decoration: none;
+    font-weight: 300;
+}
+
+/* Prospects Stylings */
+
+/* style feedback form field */
+.feedback-textarea {
+  width: 280px;
+  height: 100px;
+  border: 1px solid #ccc;
+  padding: 5px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+
+}
+  /* styling the nav tab */
+ .mytabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 50px auto;
+    padding: 25px;
+ }
+ .mytabs input[type="radio"] {
+    display: none;
+ }
+ .mytabs label {
+    padding: 25px;
+    background-color: white;
+    font-weight: bolder;
+ }
+ .mytabs .tab {
+    width: 100%;
+    padding: 20px;
+    background-color: white;
+    order: 1;
+    display: none;
+ }
+ .mytabs .tab h5 {
+    font-size: 2em;
+ }
+ .mytabs input[type="radio"]:checked + label + .tab {
+    display:block;
+
+ }
+ .mytabs input[type="radio"]:checked + label {
+    background-color:grey;
+ }

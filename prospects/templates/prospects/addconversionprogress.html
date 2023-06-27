@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-items me-auto mb-8 mb-lg-0" >
+          <li class="nav-item" style="left: 10px;">
+            <a class="nav-link active" aria-current="page" href="{% url 'prospects:conversion-tracker' %}">Active Conversions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'prospects:business-prospects' %}">Prospects</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+      <li class="breadcrumb-item" ><a href="{%url 'prospects:conversion-tracker' %}">Conversion Tracker</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Add Conversion Progress</li>
+    </ol>
+  </nav>
+    <form method = 'POST' enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="row">
+        <div class="col-md-3">
+          <div class="card" style="width: 20rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Demo Id</b> {{form.demo_id}}</li>
+              <li class="list-group-item"><b>Demo Status</b> {{ form.demostatus }}</li>
+              <li class="list-group-item"><b>Meeting</b> {{ form.meeting }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card" style="width: 20rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Attendees</b> {{ form.Attendees }}</li>
+              <li class="list-group-item"><b>Feedback</b> {{ form.feedback }}</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card" style="width: 20rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Assessment Date</b> {{ form.assessmentdate }}</li>
+              <li class="list-group-item"><b>Assessment Report</b> {{ form.report }}</li>
+              <li class="list-group-item"><b>Report Dissesmination</b> {{ form.reportdate }}</li>
+            </ul>
+          </div>    
+        </div>
+        <div class="col-md-3">
+          <div class="card" style="width: 20rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Expression of Interest</b> {{ form.expression }}</li>
+              <li class="list-group-item"><b>Facility License</b> {{ form.facility_license }}</li>
+              <li class="list-group-item"><b>KRA PIN</b> {{ form.krapin }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-2"><a class="btn btn-lg button-cancel" href="{% url 'prospects:conversion-tracker' %}">Cancel</a></div>
+        <div class="col-md-2"><button type="submit" class="btn btn-lg button-add">Add</button></div>
+        <div class="col-md-2"></div>
+      </div>
+  </form>
+
+{% endblock %}

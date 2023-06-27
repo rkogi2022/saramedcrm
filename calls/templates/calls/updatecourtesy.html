@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-items me-auto mb-8 mb-lg-0" >
+        <li class="nav-item" style="left: 10px;">
+          <a class="nav-link active" aria-current="page" href="{% url 'calls:viewsupportcall' %}">Support Calls</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'calls:viewcourtesycall' %}">Courtesy Calls</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'calls:viewdirectorscall' %}">Directors Calls</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a   href="{% url 'calls:viewcourtesycall' %}">Courtesy Calls</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Update Call Details</li>
+    </ol>
+  </nav>
+  <form method = 'POST' enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-md-4"></div>
+        <div class="col-md-3">
+          <div class="card" style="width: 30rem;">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><b>Facility Name</b> {{ form.facility }}</li>
+              <li class="list-group-item"><b>Date</b> {{ form.logdate }}</li>
+              <li class="list-group-item"><b>Feedback</b> {{ form.feedback }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <center>
+      <div>
+        <a class="btn btn-lg button-cancel" href="{% url 'calls:viewcourtesycall' %}">Cancel</a>
+        <button type="submit" class="btn btn-lg button-add">Update</button>
+      </div>
+    </center>
+  </form>
+{% endblock %}

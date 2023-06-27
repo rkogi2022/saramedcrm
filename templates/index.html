@@ -1,0 +1,101 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row my-5">
+      <div class="col-md-4">
+          <!-- pie chart(pending vs solved ) -->
+          <div class="row mb-3 pb-4">
+            <button type="button" class="btn btn-secondary btn-lg">
+              <b>No of Clients</b> <span class="badge bg-info">{{totaldata}}</span>
+            </button>
+          </div>
+          <div class="card">
+              <div class="card-header">
+                  <center><b>Problem Status</b></center>
+                  <hr>
+                  <div class="card-body">
+                      <div>
+                          <canvas id="pieChart" width="400" height="400"></canvas>
+                        </div>
+                        
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        
+                        <script>
+                          const config = document.getElementById('pieChart');
+                        
+                          new Chart(config, {
+                            type: 'pie',
+                            data: {
+                              labels: ['Done', 'Pending'],
+                              datasets: [{
+                                label: ' ',
+                                data: [{{donecount}},{{pendingcount}}],
+                                backgroundColor:[
+                                  'green', 'orange',
+                                ],
+                                hoverOffset: 4
+                              }]
+                            },
+                          });
+                        </script>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-8">
+          <!-- bar graph( how frequently modules are asked) -->
+          <div class="card">
+              <div class="card-header">
+                  <center><b>Support Calls by Module</b></center>
+              </div>
+              <div class="card-body">
+                  <div>
+                      <canvas id="myChart" width="400" height="300"></canvas>
+                    </div>
+                    
+                    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    
+                    <script>
+                      const ctx = document.getElementById('myChart');
+                    
+                      new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                          labels: ['Patient Register', 'Nurse', 'Doctor', 'Laboratory', 
+                          'Radiography', 'Inpatient','Pharmacy', 'Cashier', 'Inventory', 'Finance', 'Human Resource', 'System Admin'],
+                          datasets: [{
+                            label: 'No of Support Calls',
+                            data: [
+                              {{registercount}},{{nursecount}},{{doctorcount}},{{labcount}},
+                              {{radiographycount}},{{inpatientcount}},{{pharmacycount}},{{cashiercount}},
+                              {{inventorycount}},{{financecount}},{{humancount}},{{systemcount}},
+                          ],
+                            backgroundColor:[
+                              'Red', 'grey',
+                              'orange', 'yellow',
+                              'green','brown',
+                              'blue','purple',
+                              'indigo','yellow',
+                              'pink','violet'
+                            ],
+                            borderWidth: 1
+                          }]
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true
+                            }
+                          }
+                        }
+                      });
+                    </script>
+              </div>
+          </div>
+             
+      </div>
+  </div>
+</div>
+{% endblock %}

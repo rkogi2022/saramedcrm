@@ -1,0 +1,190 @@
+{% extends 'main.html'%}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-items me-auto mb-8 mb-lg-0" >
+          <li class="nav-item" style="left: 10px;">
+            <a class="nav-link active" aria-current="page" href="{% url 'prospects:conversion-tracker' %}">Active Conversions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'prospects:business-prospects' %}">Prospects</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb ">
+        <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a   href="{% url 'prospects:conversion-tracker' %}">Conversion Progress</a></li>
+      <li class="breadcrumb-item active" aria-current="page" >Demo Details</li>
+    </ol>
+  </nav>
+<div class="card">
+    <div class="card-header">
+        <div class="card-body">
+            {% if messages %}
+                    {% for message in messages %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-{{ message.tags}}">{{message}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}                
+            {% endif %}
+
+            <div class="col-md-12">
+                <div class="card my card shadow text-centre p-3">
+                    <div class="card">
+                        <div class="row">
+                            <table class="data">
+                                <center>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Update</th>
+                                        </tr>
+                                        {% for n in demo %}
+                                        <tr>
+                                        <td>{{ n.demo_id|upper}}</a></td>
+                                        <td><a href="{% url 'prospects:update_demo_details' n.id %}"><button type="submit" class="btn button-link"><span class="badge bg-warning text-dark">UPDATE</span></button></a></td>     
+                                        </tr>
+                                </center>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mytabs">
+                <input type="radio" id="tabdemo" name="mytabs" checked="checked">
+                <label for="tabdemo">DEMO DETAILS</label>
+                <div class="tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Demo Details</h5>
+                            <table class="table data ">
+                                <thead>
+                                    <tr>
+                                        <th>Activities</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for n in demo %}
+                                    <tr>
+                                        <td scope="row">Demo Status</td>
+                                        <td>{{ n.demostatus}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Demo Date</td>
+                                        <td>{{ n.demodate }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Attendees</td>
+                                        <td>{{ n.Attendees|linebreaks|capfirst }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Meeting</td>
+                                        <td>{{ n.meeting }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td scope="row">Feedback</td>
+                                        <td>{{ n.feedback|linebreaks }}</td>
+                                    </tr>
+                                        {% empty %}
+                                    <tr>
+                                        <td colspan="5" class="text-centre"><h8>
+                                            No demo details to display
+                                        </h8></td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <input type="radio" id="tabsite" name="mytabs">
+                <label for="tabsite">SITE ASSESSMENT DETAILS</label>
+                <div class="tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Site Assessment Details</h5>
+                            <table class="table data ">
+                                    <thead>
+                                        <tr>
+                                            <th>Activities</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for n in demo %}
+                                        <tr>
+                                            <td scope="row">Assessment Date</td>
+                                            <td>{{ n.assessmentdate}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td scope="row">Assessment Report </td>
+                                            <td>{{n.report}}</td>
+                                        </tr>
+                                            
+                                        <tr>
+                                            <td scope="row">Report Dissemination</td>
+                                            <td>{{ n.reportdate }}</td>                                      
+                                        </tr>
+                                        {%  empty %}
+                                        <tr>
+                                            <td colspan="5" class="text-centre"><h8>
+                                                Site assessment details unavailable
+                                            </h8></td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table> 
+                        </div>
+                </div>
+                </div>
+
+                <input type="radio" id="tabdoc" name="mytabs">
+                <label for="tabdoc">SUPPORTING DOCUMENTS</label>
+                <div class="tab">
+                    <div class="col-md-12">
+                        <h5>Supporting Documents</h5>
+                        <table class="table data ">
+                            <thead>
+                                <tr>
+                                    <th>Activities</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for n in demo %}
+                                <tr>
+                                    <td scope="row">Expression of Interest</td>
+                                    <td>{{n.expression}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">Facility License </td>
+                                    <td>{{n.facility_license}}</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">KRA PIN</td>
+                                    <td>{{ n.krapin}}</td>     
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-centre"><h8>
+                                        No documents uploaded
+                                    </h8></td>
+                                    {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+{% endblock %}

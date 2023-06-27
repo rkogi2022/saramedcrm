@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-items me-auto mb-8 mb-lg-0" >
+          <li class="nav-item" style="left: 10px;">
+            <a class="nav-link active" aria-current="page" href="{% url 'prospects:conversion-tracker' %}">Active Conversions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'prospects:business-prospects' %}">Prospects</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"> <a href="{% url 'auth_app:home' %}">Home</a></li>
+      <li class="breadcrumb-item"><a   href="{%url 'prospects:business-prospects' %}">Business Lead</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Create Business Prospect </li>
+    </ol>
+  </nav>
+
+
+<form method = 'POST' enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" style="width: 25rem; height: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Facility Name</b> {{form.facility_name}}</li>
+          <li class="list-group-item"><b>County</b> {{ form.county }}</li>
+          <li class="list-group-item"><b>Town</b> {{ form.town }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="width: 25rem; height: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Email</b> {{ form.email }}</li>
+          <li class="list-group-item"><b>Contact Person</b> {{ form.contact_person }}</li>
+          <li class="list-group-item"><b>Phone No</b> {{ form.phone_no }}</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="width: 26rem; height: 18rem;">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><b>Feedback</b> {{ form.comment }}</li>
+          <li class="list-group-item"><b>Date</b> {{ form.created_date }}</li>
+        </ul>
+      </div>    
+    </div>
+
+  </div>
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-2"><a class="btn btn-lg button-cancel" href="{% url 'prospects:business-prospects' %}">Cancel</a></div>
+    <div class="col-md-2"><button type="submit" class="btn btn-lg button-add">Add</button></div>
+    <div class="col-md-2"></div>
+  </div>
+</form>
+
+{% endblock %}
