@@ -59,19 +59,13 @@ class implementation(models.Model):
     start_date = models.DateField(null=True, blank=True)
     golive_date=models.DateField(null=True, blank=True)
     end_date= models.DateField(null=True, blank=True)
-    no_of_days=models.DurationField(blank=True)
+    no_of_days=models.CharField(max_length=20,blank=True)
     license_due=models.DateField(default=timezone.now)
     implementation_report=models.FileField(upload_to='documents/' ,blank=True)
 
     def save(self, *args, **kwargs):
-        self.no_of_days=self.end_date - self.start_date
         self.license_due=self.golive_date + timedelta(days=366)
 
-        # Check if the license due date has been achieved
-        if self.golive_date and self.license_due < timezone.now().date():
-            # Calculate the next anniversary by adding 1 year (365 days)
-            self.license_due = self.license_due + timedelta(days=365)
-        
         return super().save(*args, **kwargs)
 
     def __str__(self):

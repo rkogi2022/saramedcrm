@@ -47,9 +47,10 @@ class AddImplementationDetails(forms.ModelForm):
     end_date=forms.DateField(label='End Date',widget=DateInput(attrs={'class':'form-control'}),required=True)
     class Meta:
         model=implementation
-        fields=('facility_name','start_date','golive_date','end_date','implementation_report')
+        fields=('facility_name','start_date','golive_date','end_date','no_of_days','implementation_report')
         widgets = {
             'facility_name': forms.Select(attrs={'class': 'form-control'}),
+            'no_of_days':forms.TextInput(attrs={'class': 'form-control'}),
             'implementation_report': forms.FileInput(attrs={'class': 'form-control'}),
         }
         def __init__(self, *args, **kwargs):
