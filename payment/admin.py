@@ -4,3 +4,4 @@ from .models import *
 
 admin.site.register(invoice)
 admin.site.register(receipt)
+admin.site.register(implementation)
